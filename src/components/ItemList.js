@@ -27,9 +27,16 @@
 // }
 // export default ItemList
 
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
+import { addItem } from "../utils/cartSlice";
 
 const ItemList = (props) => {
+  const dispatch = useDispatch()
+  const handleAddItem = () => {
+    dispatch(addItem('pizza'))
+
+  }
   const { item } = props;
   console.log(item)
 
@@ -55,7 +62,7 @@ const ItemList = (props) => {
               alt="["
             />
           )}
-            <button className="absolute bottom-0 right-0 bg-white text-green-600 text-sm font-semibold py-1 px-3 rounded-tl-lg shadow">
+            <button onClick={handleAddItem}className="absolute bottom-0 right-0 bg-white text-green-600 text-sm font-semibold py-1 px-3 rounded-tl-lg shadow">
               Add +
             </button>
           </div>
