@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Shimmer from "./Shimmer"
 import { Link } from "react-router-dom"
 import useOnlineStatus from "../utils/useOnlineStatus"
+import { withPromotedLabel } from "./RestaurentCard"
 const Body = () =>{
  
 
@@ -26,6 +27,7 @@ const fetchData = async() =>{
   setlistOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
   setfilteredres(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
 }
+console.log(listOfRestaurants)
 
 const onlineStatus = useOnlineStatus()
 if(!onlineStatus) return <h1>Check your internet connection</h1>
@@ -35,6 +37,7 @@ if(listOfRestaurants.length===0)
   {
     return <Shimmer/>
   }
+  // const promoted = withPromotedLabel(RestaurentCard)
 
   return (
     <div className="body">
@@ -58,7 +61,7 @@ if(listOfRestaurants.length===0)
             const filteredlist = listOfRestaurants.filter((res) => res.info.avgRating >4)
             setlistOfRestaurants(filteredlist)
           }}>
-            Top Rated Restaurants
+            Top Rated Restaurants 
             </button>
         </div>
        
@@ -67,7 +70,10 @@ if(listOfRestaurants.length===0)
         {
           filteredres.map((restaurent) => (
             
-           <Link to={"/restaurants/" + restaurent.info.id}key={restaurent.info.id}><RestaurentCard resName={restaurent} /></Link>
+            
+           <Link to={"/restaurants/" + restaurent.info.id}key={restaurent.info.id}>
+            
+            <RestaurentCard resName={restaurent} /></Link>
           ))
         }
 

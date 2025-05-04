@@ -1,25 +1,3 @@
-// import { CDN_URL } from "../utils/constants";
-// const RestaurentCard = (props) =>{
-//   // console.log(props);
-//   const {resName} = props;
-//   const {name,cuisines,avgRating} = resName?.info
-//   // const { deliveryTime} = resName?.info.sla
- 
-
-  
-//   return (
-//     <div className="restaurent-card m-4 p-4 bg-gray-200 w-[250px]  rounded-lg">
-//       <img className="res-logo rounded-lg h-42 "alt='Hangout'src={CDN_URL + resName.info.cloudinaryImageId}/>
-//       <h2 className="font-bold text-lg">{name}</h2>
-//       <h4 className="">{cuisines.join(',')}</h4>
-//       <h4 >{avgRating}</h4>
-//       {/* <h4>{deliveryTime} mins</h4> */}
-
-//     </div>
-//   )
-// }
-
-// export default RestaurentCard
 
 import { CDN_URL } from "../utils/constants";
 
@@ -43,5 +21,16 @@ const RestaurentCard = (props) => {
     </div>
   );
 };
+
+// export const withPromotedLabel = (RestaurentCard) =>{
+//   return () =>{
+//     return (
+//       <div>
+//         <label>Promoted</label>
+//         <RestaurentCard/>
+//       </div>
+//     )
+//   }
+// }
 
 export default RestaurentCard;
