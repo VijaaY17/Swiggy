@@ -7,18 +7,23 @@ import Error from "./src/components/Error";
 import Contact from "./src/components/Contact";
 import RestaurentMenu from "./src/components/RestaurantMenu";
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom"
+import { Provider } from "react-redux";
+import appStore from "./src/utils/appStore";
 
 
 
 
 const App = () =>{
-  return ( <div className="main">
+  return ( 
+    <Provider store={appStore}>
+  <div className="main">
     <Header/>
     <Outlet/>
   
   
 
   </div>
+  </Provider>
 )}
 const appRouter = createBrowserRouter([
   {
