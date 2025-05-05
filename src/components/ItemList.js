@@ -31,34 +31,34 @@ import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
 import { addItem } from "../utils/cartSlice";
 
-const ItemList = (props) => {
+const ItemList = ({items}) => {
   const dispatch = useDispatch()
   const handleAddItem = () => {
     dispatch(addItem('pizza'))
 
   }
-  const { item } = props;
-  console.log(item)
+  // const { item } = props;
+  console.log(items)
 
   return (
     <div className="space-y-6">
-      {item.map((items) => (
+      {items.map((item) => (
         <div
           key={items.card.info.id}
           className="p-4 border-b border-gray-200 flex justify-between items-center"
         >
           <div className="flex-1 text-left pr-4">
-            <h3 className="font-semibold text-lg">{items.card.info.name}</h3>
-            <p className="text-sm text-gray-600 mt-1">{items.card.info.description}</p>
+            <h3 className="font-semibold text-lg">{item.card.info.name}</h3>
+            <p className="text-sm text-gray-600 mt-1">{item.card.info.description}</p>
             <div className="mt-2 font-semibold text-green-600">
-              ₹{items.card.info.price ? items.card.info.price / 100: items.card.info.defaultPrice/100}
+              ₹{item.card.info.price ? items.card.info.price / 100: item.card.info.defaultPrice/100}
             </div>
           </div>
           <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden">
-          {items.card.info.imageId && (
+          {item.card.info.imageId && (
             <img
               className="w-full h-full object-cover"
-              src={CDN_URL + items.card.info.imageId}
+              src={CDN_URL + item.card.info.imageId}
               alt="["
             />
           )}
